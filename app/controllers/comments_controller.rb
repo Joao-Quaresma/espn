@@ -2,6 +2,7 @@
 
 # comments controller
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
   before_action :find_message, only: %i[create edit update destroy]
   before_action :find_comment, only: %i[edit update destroy]
   def create
