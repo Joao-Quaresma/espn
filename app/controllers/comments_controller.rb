@@ -3,11 +3,11 @@
 # comments controller
 class CommentsController < ApplicationController
   def create
-    @message.find(params[:message_id])
-    @comment = @message.comments.create(coment_params)
+    @message = Message.find(params[:message_id])
+    @comment = @message.comments.create(comment_params)
     @comment.user_id = current_user.id
 
-    if @omment.save
+    if @comment.save
       redirect_to message_path(@message)
     else
       render 'new'
